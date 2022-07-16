@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/6701c3c386.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <i class="bi bi-sort-numeric-up sorticon"></i>
+    <div class="top">
+
+
+        <div class="budget-title">
+            Available Budget In<span id="dates"> October</span> Month
+        </div>
+        <div class="total-value" id="total_v_e">
+            - 0.00
+        </div>
+        <div class="inexp">
+            <div class="income">INCOME <span id="t_income">0</span></div>
+            <div class="exp-box">
+                <div class="expenses">EXPENSES <span id="t_exp">0</span></div>
+                <div class="budget-exp-per">--</div>
+            </div>
+        </div>
+
+    </div>
+    <!-- ///////////////////////////////////////////// -->
+
+    <div class="bottom">
+        <div class="form">
+            <div class="select-box">
+                <select id="txn-type">
+                 <option class="inc" value="inc" selected>+</option>
+                 
+                 <option class="exp" value="exp" >-</option>
+              </select>
+            </div>
+
+            <input id="txn-desc" type="text" class="add__description" placeholder="Add description">
+            <input id="txn-amt" type="number" class="values" placeholder="Value">
+
+            <button id="add-cta" class="com-btn">Add</button>
+        </div>
+    </div>
+
+
+
+    <!-- ////////////////////////////// -->
+
+    <div class="middle">
+        <div class="middle-income">
+
+            <h2 class="heading middle-heading-1">INCOME </h2>
+            <!-- <div class="sorting-icons">
+                <div class="sort-low-to-high-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down-alt" viewBox="0 0 16 16">
+                      <path d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293V3.5zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z"/>
+                      </svg>
+                </div>
+                <div class="sort-high-to-low-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up" viewBox="0 0 16 16">
+                      <path d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707V12.5zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+                      </svg>
+                </div>
+                <div class="sort-alf-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-down" viewBox="0 0 16 16">
+                       <path fill-rule="evenodd" d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z"/>
+                       <path d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zM4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z"/>
+                       </svg>
+                </div>
+            </div> -->
+
+            <hr>
+            <div class="box">
+                <!-- <div class="content">
+                    <div class="item">Food</div>
+                    <div class="right-middle incomes">+4000</div>
+                    <div class="percent-box">20</div>
+                </div>
+                <hr> -->
+            </div>
+
+        </div>
+
+        <div class="middle-expenses">
+            <h2 class="heading middle-heading-2">EXPENSES</h2>
+
+            <hr>
+            <div class="box2">
+
+                <!-- <div class="content">
+                <div class="item">Food</div>
+                <div class="right-middle expense">
+                    -4000
+                </div>
+            </div>
+            <hr> -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <script src="budget2.js"></script>
+
+</body>
+
+</html>

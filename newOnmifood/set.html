@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const name = new Set(['yash', 'ram', 'sham', 'yash']);
+        // console.log(name);
+
+        // console.log(new Set('yash'));
+        // console.log(name.size);
+        // console.log(name.has("yash"));
+
+        // for (const value of name) console.log(value);
+
+        // const food = ['pizza', 'burger', 'pasta', 'pizza', 'breasd'];
+        // console.log(food);
+
+        // const newFood = [...new Set(food)];
+        // console.log(newFood);
+
+        // const name = 'yAsH';
+        // const corretName = name.toLowerCase();
+        // console.log(name);
+        // console.log(corretName);
+        // const newname = corretName[0].toUpperCase() + corretName.slice(1);
+        // console.log(newname);
+
+        // const name = 'yash;gupta msit;4_sem';
+        // const [fname, sname, sem] = name.split(';');
+        // const output = `${fname} ${sname} ${sem.replace('_','th ')}`;
+        // console.log(output);
+
+
+        // const intro = function(name) {
+        //     return function(classes) {
+        //         console.log(`my name is ${name} and i am in ${classes}`);
+        //     }
+        // }
+        // const Fintro = intro('yash');
+        // Fintro('btech');
+
+        // intro('yash');
+
+        const compName = function(age) {
+            console.log(`my name is ${this.firstName} ${this.secondName}my age is ${age}`);
+        }
+
+        const name1 = {
+            firstName: 'yash',
+            secondName: 'gupta',
+
+        }
+
+        const name2 = {
+            firstName: 'Arjun',
+            secondName: 'gupta'
+        }
+        compName.apply(name1, [22]);
+        compName.apply[name2, 17];
+        let myName = compName.bind(name1, 17);
+        console.log(myName);
+        myName();
+    </script>
+</body>
+
+</html>
