@@ -1,0 +1,218 @@
+     * {
+         padding: 0;
+         margin: 0;
+         box-sizing: content-box;
+     }
+     
+     .rotate {
+         transition: transform 0.6s;
+         transform-style: preserve-3d;
+         transform: rotateY(180deg);
+     }
+     
+     .numberRotated {
+         transform: rotateY(180deg);
+     }
+     
+     .hideRotatedTile {
+         transition: transform 0.6s;
+         /* transform-style: preserve-3d; */
+         transform: rotateY(0deg);
+     }
+     
+     .section1 {
+         align-items: center;
+         text-align: center;
+         background-color: rgba(251, 255, 0, 0.733);
+         max-height: 40%;
+         padding: 5%;
+         font-size: 20px;
+         animation-name: example;
+         animation-duration: 4s;
+     }
+     
+     @keyframes example {
+         0% {
+             background-color: rgba(246, 246, 31, 0.945);
+             left: 0px;
+             top: 0px;
+         }
+         25% {
+             background-color: rgba(153, 241, 241, 0.945);
+             right: 200px;
+             left: 200px
+         }
+     }
+     
+     .title-word {
+         animation: color-animation 4s linear infinite;
+     }
+     
+     .title-word-1 {
+         --color-1: #DF8453;
+         --color-2: #1e7aa1;
+         --color-3: #d8716f;
+     }
+     
+     .title-word-2 {
+         --color-1: #DBAD4A;
+         --color-2: #72e9db;
+         --color-3: #17494D;
+     }
+     
+     .title-word-3 {
+         --color-1: #81c2ba;
+         --color-2: #bb7c7b;
+         --color-3: #45d6c5;
+     }
+     
+     .title-word-4 {
+         --color-1: #1e7aa1;
+         --color-2: #DF8453;
+         --color-3: #E4A9A8;
+     }
+     
+     .title-word-5 {
+         --color-1: #DF8453;
+         --color-2: #1e7aa1;
+         --color-3: #d8716f;
+     }
+     
+     @keyframes color-animation {
+         0% {
+             color: var(--color-1)
+         }
+         32% {
+             color: var(--color-1)
+         }
+         33% {
+             color: var(--color-2)
+         }
+         65% {
+             color: var(--color-2)
+         }
+         66% {
+             color: var(--color-3)
+         }
+         99% {
+             color: var(--color-3)
+         }
+         100% {
+             color: var(--color-1)
+         }
+     }
+     
+     .boxs {
+         /* border: 2px solid black; */
+         align-items: center;
+         margin: auto;
+         width: 60%;
+         height: 50%;
+         overflow: hidden;
+     }
+     
+     .box1 {
+         background-color: rgb(203, 228, 253);
+         align-items: center;
+         text-align: center;
+         width: 17%;
+         height: 94px;
+         display: inline-block;
+         margin-left: 12px;
+         margin-bottom: 10px;
+         margin-top: 10px;
+         font-size: 50px;
+         border: white 0.5px solid white;
+         /* box-shadow: 2px 2px 4px rgb(216, 216, 216); */
+     }
+     
+     .boxs :hover {
+         background-color: rgb(222, 89, 255);
+     }
+     
+     .hidden {
+         visibility: hidden;
+         text-decoration: black;
+     }
+     
+     #main {
+         padding: 10%;
+         background-image: url(https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/84366486/original/c490739223326be0ddccbf3bd1d7381ce7926fa5/do-stunning-background-videos-for-your-website.png);
+         background-repeat: no-repeat;
+         background-size: cover;
+     }
+     
+     .forms {
+         margin-top: -50px;
+         align-items: center;
+         font-size: 35px;
+         color: white;
+         /* border: 2px solid white; */
+         padding: 8px;
+         text-align: center;
+         /* background-color: rgb(145, 251, 150); */
+     }
+     
+     #tiles {
+         width: 400px;
+         height: 30px;
+         margin-top: 20px;
+     }
+     
+     #submit {
+         padding: 7px 17px;
+         margin: 30px;
+         text-decoration: none;
+         font-size: medium;
+         border: 2px solid rgb(255, 255, 0);
+         border-radius: 8px;
+         background-color: rgb(255, 255, 0);
+     }
+     
+     #submit:hover {
+         padding: 10px 20px;
+         background-color: rgb(245, 245, 47);
+         border: 2px solid rgb(245, 245, 47)
+     }
+     
+     button {
+         padding: 7px 17px;
+         align-items: center;
+         text-align: center;
+         text-decoration: none;
+         font-size: medium;
+         border: 2px solid rgb(255, 255, 0);
+         border-radius: 8px;
+         background-color: rgb(255, 255, 0);
+         margin-left: 480px;
+         margin-top: 50px;
+     }
+     /* .boxs {
+        align-items: center;
+        margin: auto;
+        width: 50%;
+        height: 50%;
+        background-color: none;
+        overflow: hidden;
+        justify-content: center;
+        justify-content: space-between;
+        
+    }
+    
+    .box1 {
+        justify-content: space-around;
+        display: table-cell;
+        vertical-align: middle;
+        background-color: rgb(223, 157, 240);
+        box-shadow: 2px 2px 4px rgb(216, 216, 216);
+        border: 1px;
+        font-size: 50px;
+        background-repeat: repeat;
+        border: 1.5px solid black;
+        width: 33%;
+        height: 100px;
+        float: left;
+        align-items: center;
+        transform-style: preserve-3d;
+        transition: all 0.5s;
+    } */

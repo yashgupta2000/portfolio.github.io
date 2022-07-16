@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+    .parent-container{
+        width:100vw;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #faecec;
+    }
+    .tile-container{
+        margin: auto;
+        width: 70vw;
+        min-height: 70vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background-color: #faecec;
+    }
+    .tile{
+        height: 100px;
+        width: 100px;
+        background-color: rgb(43 42 42);
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .tile span{
+        font-size: 20px;
+        color: black;
+    }
+    .hidden{
+        visibility: hidden;
+    }
+    .rotateTile{
+        background-color: #ffc700;
+        transition: transform 0.6s, background-color 1.5s;
+        /* transform-style: preserve-3d; */
+        transform: rotateY(180deg);
+    }
+    .hideRotatedTile{
+        transition: transform 0.6s;
+        /* transform-style: preserve-3d; */
+        transform: rotateY(0deg);
+    }
+    .numberRotated{
+        transform: rotateY(180deg);
+    }
+    </style>
+</head>
+<body>
+    <div class="parent-container">
+        <div class="tile-container">
+            <div class="tile">
+                <span>2</span>
+            </div>
+            <div class="tile">
+                <span>2</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    (function(){
+        var tileContainer = document.querySelector(".tile-container");
+        var numsGenerated = null;
+        init();
+
+        function init(){
+            cleanup();
+
+            var numOfTiles = getUserInputForTiles();
+            renderUI(numOfTiles);
+            addEventListeners();
+        }
+
+        function getUserInputForTiles(promtMsg = "Enter number of tiles of your choice"){
+            var userInput = prompt(promtMsg);
+            if(validateNumOfTiles(userInput)) return userInput;
+            else return getUserInputForTiles("Enter only even number to play this game");
+        }
+
+        function validateNumOfTiles(numOfTiles){
+            if(numOfTiles % 2 !== 0) return false;
+            return true;
+        }
+        
+        function cleanup(){
+            tileContainer.innerHTML = "";
+        }
+
+        function renderUI(numOfTiles){ 
+            //generate half random numbers
+            numsGenerated = getRandomNumsArr(numOfTiles);
+
+            var htmlStr = "";
+            numsGenerated.forEach(function(curNum, index){
+                htmlStr = htmlStr + '<div class="tile" id="tile-' + (index+1) + '"><span class="hidden numberRotated">' + curNum + '</span></div>'
+            })
+            tileContainer.innerHTML = htmlStr
+        }
+
+        function addEventListeners(){
+            var targetTilesArr = [];
+
+            var inProcess = false;
+
+            tileContainer.addEventListener('click', function(e){
+                try{
+                    var targetNum = e.target.tagName === "SPAN" ? e.target.innerHTML : (e.target.className.indexOf("tile") > -1 && e.target.querySelector("span").innerHTML)
+                    var targetId = e.target.tagName === "SPAN" ? e.target.parentElement.id : e.target.id;
+
+                    if(targetNum && targetId && !inProcess){
+                        inProcess = true;
+                        targetTilesArr.push({
+                            tileValue: targetNum,
+                            tileId: targetId
+                        })
+                        
+                        document.querySelector("#" + targetId).classList.add("rotateTile");
+                        document.querySelector("#" + targetId + " span").classList.remove("hidden");
+                        
+                        if(targetTilesArr.length === 2){
+                            if(targetTilesArr[0].tileValue === targetTilesArr[1].tileValue){
+                                //success
+                                if(tileContainer.querySelectorAll("span.hidden").length === 0){
+                                    console.log("game over")
+                                }
+                                inProcess = false;
+                            }else{
+                                //failure + hide numbers
+                                targetTilesArrCopy = targetTilesArr.slice(0);
+                                setTimeout(function(){
+                                    targetTilesArrCopy.forEach(function(tileObj){
+                                        document.querySelector("#" + tileObj.tileId + " span").classList.add("hidden");
+                                        document.querySelector("#" + tileObj.tileId).classList.remove("rotateTile");
+                                        document.querySelector("#" + tileObj.tileId).classList.add("hideRotatedTile");
+                                        setTimeout(function(){
+                                            document.querySelector("#" + tileObj.tileId).classList.remove("hideRotatedTile");
+                                        },1000);
+                                        inProcess = false;
+                                    })
+                                },700)
+                            }
+                                targetTilesArr = [];
+                        }else{
+                            inProcess = false;
+                        }
+                        
+                    }
+                }catch(ex){
+                    inProcess = false;
+                    console.error(ex)
+                }
+            })
+        }
+
+        function getRandomNumsArr(numOfTiles){
+            var randomNumsGenerated = [];
+            for(let i=0; i<numOfTiles/2; i++){
+                randomNumsGenerated.push(Math.ceil(Math.random()*10));
+            }
+
+            //shuffle and store these random numbers for double the number of tiles
+            var numsIndexArr = [];
+            while(numsIndexArr.length < numOfTiles){
+                var indexPicked = Math.floor(Math.random()*(randomNumsGenerated.length));
+                if(getNumCountInArr(numsIndexArr, indexPicked) < 2 ) numsIndexArr.push(indexPicked);
+            }
+
+            return numsIndexArr.map(function(el){
+                return randomNumsGenerated[el]
+            });
+        }
+        
+        function getNumCountInArr(arr, num){
+            var count = 0;
+            arr.forEach(function(el){
+                if(el === num) count++;
+            });
+            return count;
+        }
+
+    })();
+
+</script>
+</html>
+
+
